@@ -1,0 +1,14 @@
+<?php
+	echo '<pre>';
+	var_dump($_SERVER);
+	echo '</pre>';
+?>
+
+<?php
+  $keyword = '';
+  if(isset($_GET['keyword']))
+  {
+	$keyword = $_GET['keyword'];
+	echo $keyword.'<br>';
+  }
+?>

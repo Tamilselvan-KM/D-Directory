@@ -1,0 +1,16 @@
+.Quiz a
+{
+    text-decoration: none;
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    font-size: 30px;
+    float: right;
+    margin-right: 200px;
+}
+<div class="Quiz">
+                <a href=""><li>Maths</li></a>
+    </div>
+   <input type="radio" name="button" onclick="correct();" />DDL<br>
+            <input type="radio" name="button" onclick="incorrect();" />DML<br>
+            <input type="button" value="submit" onclick="button();">

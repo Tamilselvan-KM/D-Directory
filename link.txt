@@ -1,0 +1,42 @@
+http://www.php.net/manual/en/ref.strings.php
+
+http://www.php.net/manual/en/ref.array.php
+
+http://www.php.net/manual/en/book.filesystem.php
+
+Ternary if in php:
+	echo $age <=22 ? "Young" : "Not Young";
+	
+	echo $age <=22 ? "Young" : ($age<30 ? "Not Young" : 'old');
+	
+	echo $myaddress = isset($address) ? $address : 'Current Location';
+
+	echo $myaddress = $address ?? 'Current Location';
+
+Loops:
+	foreach loop is use for array variable.
+	foreach($fruits as $fruit)
+		echo $fruit .'<br>'
+
+Arrow Function
+	function sum(...$numbers)
+	{
+		$sum = 0;
+		foreach($numbers as $num) sum+=num;
+		return $sum;
+	}
+	$sum = sum(1,2,3);
+	echo $sum;
+
+Different format of date & time:
+ http://www.php.net/manual/en/function.date.php
+ http://www.php.net/manual/en/function.date-parse.php
+ http://www.php.net/manual/en/function.date-parse-from-format.php
+
+files:
+For make directory = mkdir();
+For rename directory = rename();
+For delete directory = rmdir();
+For read file and folders inside directory = scandir();
+For get and put the contents inside directory =file_get_contents();
+					       file_put_contents(); 

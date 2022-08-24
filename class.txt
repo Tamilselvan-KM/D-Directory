@@ -1,0 +1,80 @@
+https://www.facebook.com/reservebankofindia
+
+https://twitter.com/RBI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor
+
+https://www.instagram.com/rbioffic/?hl=en
+
+<?php
+        $sql_interest = "SELECT regid FROM interest WHERE regid = '$uloanid'";
+        $res_interest= mysqli_query($con, $sql_interest);
+        $resCheck_interest = mysqli_num_rows($res_interest);
+
+        if($resCheck_interest > 0){
+            echo "<script>alert('Already interest calculated');
+                          location.href='viewpendingapp.php?calcinterest=$uloanid';
+                    </script> ";
+        }
+        else{
+            if((int)$reqamount < 100000){
+                $loantype       = "Tractor Loan";
+                $monthsduration =  24;
+                $ramount        =  $reqamount;
+                $interest       =  3;
+                $interestamount =  $reqamount * (3 / 100);
+                $totalamountpay =  $monthsduration * $interestamount * $reqamount;
+                setlocale(LC_MONETARY,"en_INR");
+                $delaycharge    =  300;
+                $processingfee  =  $reqamount * (0.50 / 100);
+            }
+            else if((int)$reqamount < 160000){
+                $loantype       = "Finacing Pump set Loan";
+                $monthsduration =  18;
+                $ramount        =  $reqamount;
+                $interest       =  3.5;
+                $interestamount =  $reqamount * (3 / 100);
+                $totalamountpay =  $monthsduration * $interestamount * $reqamount;
+                setlocale(LC_MONETARY,"en_INR");
+                $delaycharge    =  350;
+                $processingfee  =  $reqamount * (1.40 / 100);
+            }
+            else if((int)$reqamount <= 300000){
+                $loantype       = "Crop Loan";
+                $monthsduration =  36;
+                $ramount        =  $reqamount;
+                $interest       =  3;
+                $interestamount =  $reqamount * (3 / 100);
+                $totalamountpay =  $monthsduration * $interestamount * $reqamount;
+                setlocale(LC_MONETARY,"en_INR");
+                $delaycharge    =  450;
+                $processingfee  =  $reqamount * (1.00 / 100);
+            }
+            else{
+                echo "error";
+            }
+    
+            $sql_insert = "INSERT INTO interest(regid, loantype, monthsduration, ramount, interest, interestamount, totalamountpay, delaycharge, processingfee)
+                        VALUES('$uloanid', '$loantype', '$monthsduration', '$ramount', '$interest', '$interestamount', '$totalamountpay', '$delaycharge', '$processingfee')
+                            ";
+            $res = mysqli_query($con, $sql_insert);
+            //$cnt = mysqli_num_rows($res);
+            
+            if($res){
+                //echo "insert success";
+?>
+ 
+            <script>
+            alert('Interest Calculated for the Amount ' + <?php echo $reqamount?>);
+            location.href = 'viewpendingapp.php?calcinterest=<?php echo $uloanid?>';
+            </script>
+
+<?php 
+            }
+            else{
+                echo "error";
+            }
+        }
+    }
+?>
+
+
+https://teams.microsoft.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fmeetup-join%2F19%3A778be0e10489479e9c8bfc3988c9f465%40thread.tacv2%2F1612081535930%3Fcontext%3D%257b%2522Tid%2522%253a%2522a5bd300c-c3b3-41d8-87e0-1f5c8d364af3%2522%252c%2522Oid%2522%253a%25221cef8381-24a4-48e8-9f21-834b485d7859%2522%257d%26anon%3Dtrue&type=meetup-join&deeplinkId=a977afa4-cf8c-4ecc-a893-2e95f8a15fce&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true
